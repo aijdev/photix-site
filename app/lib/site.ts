@@ -15,7 +15,7 @@ export const SITE_DESCRIPTION =
 
 // TODO: replace with the live App Store listing URL once available.
 export const APP_STORE_URL =
-  "https://apps.apple.com/app/photix-ai-image-generator/id0000000000";
+  "https://apps.apple.com/us/app/image-generator-photix/id6745130814";
 
 export const SUPPORT_EMAIL = "support@photix.app";
 
