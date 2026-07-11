@@ -38,6 +38,10 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          # Enable Pages (build type: GitHub Actions) on first run if the repo
+          # doesn't have it configured yet, instead of failing with "Not Found".
+          enablement: enabled
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
