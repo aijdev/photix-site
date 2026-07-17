@@ -31,45 +31,5 @@ export const ORG = {
   logo: `${SITE_URL}/logo.jpg`,
 };
 
-/** Primary navigation shown in the header and footer. */
-export const NAV_LINKS = [
-  { label: "Features", href: "/features" },
-  { label: "Avatar Ideas", href: "/avatar-ideas" },
-  { label: "Use Cases", href: "/use-cases" },
-  { label: "FAQ", href: "/faq" },
-  { label: "About", href: "/about" },
-] as const;
-
-export const FOOTER_NAV: {
-  title: string;
-  links: { label: string; href: string }[];
-}[] = [
-  {
-    title: "Product",
-    links: [
-      { label: "Overview", href: "/" },
-      { label: "All Features", href: "/features" },
-      { label: "Use Cases", href: "/use-cases" },
-      { label: "Avatar Ideas", href: "/avatar-ideas" },
-    ],
-  },
-  {
-    title: "Features",
-    links: [
-      { label: "AI Image Generator", href: "/features/ai-image-generator" },
-      { label: "AI Photo Editor", href: "/features/ai-photo-editor" },
-      { label: "AI Avatar Maker", href: "/features/ai-avatar" },
-      { label: "Art Styles", href: "/features/art-styles" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "/about" },
-      { label: "FAQ", href: "/faq" },
-      { label: "Privacy", href: "/privacy" },
-      { label: "Terms", href: "/terms" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-];
+// Primary nav and footer link labels are translated; see i18n/dictionaries and
+// components/SiteHeader.tsx + Footer.tsx for the localized link structure.

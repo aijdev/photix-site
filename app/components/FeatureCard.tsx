@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Feature } from "../lib/content";
+import { type Locale, defaultLocale, localizedPath } from "../i18n/config";
+import { getDictionary } from "../i18n/getDictionary";
 import {
   ArrowRightIcon,
   PaletteIcon,
@@ -21,10 +23,17 @@ export function featureIcon(slug: string): ReactNode {
 }
 
 /** Linked card summarising one creative mode. Used on the home + features hub. */
-export function FeatureCard({ feature }: { feature: Feature }) {
+export function FeatureCard({
+  feature,
+  locale = defaultLocale,
+}: {
+  feature: Feature;
+  locale?: Locale;
+}) {
+  const t = getDictionary(locale).common;
   return (
     <Link
-      href={feature.href}
+      href={localizedPath(feature.href, locale)}
       className="card card-hover group flex flex-col gap-4 p-6"
     >
       <span className="icon-badge h-12 w-12">{featureIcon(feature.slug)}</span>
@@ -33,7 +42,7 @@ export function FeatureCard({ feature }: { feature: Feature }) {
         <p className="text-sm leading-relaxed text-muted">{feature.tagline}</p>
       </div>
       <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-        Learn more
+        {t.learnMore}
         <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
       </span>
     </Link>

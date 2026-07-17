@@ -1,53 +1,15 @@
 import type { Metadata } from "next";
-import { buildMetadata } from "../lib/seo";
-import { ALL_FAQS, FAQS } from "../lib/content";
-import { faqSchema } from "../lib/schema";
+import { metaFrom } from "../lib/seo";
+import { getDictionary } from "../i18n/getDictionary";
+import { AppShell } from "../components/AppShell";
+import { FaqView } from "../views/FaqView";
 
-import { PageHeader } from "../components/PageHeader";
-import { Section } from "../components/Section";
-import { FaqList } from "../components/Faq";
-import { CTA } from "../components/CTA";
-import { JsonLd } from "../components/JsonLd";
+export const metadata: Metadata = metaFrom(getDictionary("en").meta.faq, "/faq", "en");
 
-export const metadata: Metadata = buildMetadata({
-  title: "Frequently Asked Questions",
-  description:
-    "Answers to common questions about Photix — how the AI image generator, photo editor, and avatar maker work, Photix PRO, privacy and safety, and getting started on iPhone and iPad.",
-  path: "/faq",
-  keywords: ["Photix FAQ", "AI image app help", "Photix PRO questions"],
-});
-
-export default function FaqPage() {
+export default function Page() {
   return (
-    <>
-      <JsonLd data={faqSchema(ALL_FAQS)} />
-
-      <PageHeader
-        eyebrow="FAQ"
-        title="Frequently asked questions"
-        crumbs={[
-          { name: "Home", path: "/" },
-          { name: "FAQ", path: "/faq" },
-        ]}
-        intro="Everything you might want to know about Photix — from how each creative mode works to Photix PRO, privacy, and billing."
-      />
-
-      <Section>
-        <div className="mx-auto flex max-w-3xl flex-col gap-14">
-          {FAQS.map((group) => (
-            <div key={group.category} className="flex flex-col gap-6">
-              <h2 className="text-2xl font-bold tracking-tight">{group.category}</h2>
-              <FaqList items={group.items} />
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <CTA
-        title="Still have a question?"
-        description="Reach the team directly and we'll help you get the most out of Photix."
-        secondary={{ label: "Contact us", href: "/contact" }}
-      />
-    </>
+    <AppShell locale="en">
+      <FaqView locale="en" />
+    </AppShell>
   );
 }
